@@ -16,9 +16,24 @@ class Person {
         this.gender = attr.gender;
     }
     speak(){
-        return `Hell, my name is ${this.name}, I am from ${this.location}.`
+       console.log(`Hello, my name is ${this.name}, I am from ${this.location}.`);
     }
 }
+
+const john = new Person ({
+    name: 'John',
+    age: 23,
+    location: 'Los Angeles County',
+    gender: 'Male'
+})
+
+const megan  = new Person ({
+    name: 'Megan',
+    age: 17,
+    location: 'Ventura County',
+    gender: 'Female'
+})
+
 
 // #### Instructor
 
@@ -45,10 +60,26 @@ class Instructor extends Person{
     }
 
     grade(student, subject){
-        console.log(`${student.name} receives a perfect score on ${subject}`)
+        if(student === matt){
+            console.log(`${student.name} got caught cheating and lying. ${student.name} receives corrective action resulting in expulsion.`)
+        } else if (student === olly){
+            console.log(`Jon Snow returns from the dead and pushes ${student.name} off the wall.`)
+        } else{
+        console.log(`${student.name} receives a perfect score in ${subject}.`)
+        }
     }
 
 }
+
+const josh = new Instructor ({
+    name: 'Josh',
+    age: 35,
+    location: 'Unknown',
+    gender: 'MAN',
+    specialty: 'Explaining all things difficult.',
+    favLanguage: 'JavaScript',
+    catchPhrase: 'This is sooo cool guys.',
+})
 
 // #### Student
 
@@ -80,10 +111,41 @@ class Student extends Person {
         console.log(`${this.name} has submitted a PR for ${subject}`);
     }
 
-    springChallenge(){
+    sprintChallenge(subject){
         console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 }
+
+const annie = new Student ({
+    name: 'Annie',
+    age: 17,
+    location: 'Paris',
+    gender: 'Female',
+    previousBackground: 'Streaming',
+    className: "WEB01",
+    favSubjects: ['Sleeping', 'Snack Time', 'Not Listening'],
+})
+
+const matt  = new Student ({
+    name: 'Matthew',
+    age: 21,
+    location: 'Moon', //Matthew is a compulsive liar.
+    gender: 'Male', //this is actually true
+    previousBackground: 'Covert Ops', //Matthew is still a compulsive liar.
+    className: "omniclassual", //This kid has issues.
+    favSubjects: ['This Class', 'That Class', 'Every Class'], // Matthew can't make up his mind.
+})
+
+const olly  = new Student ({
+    name: 'Olly',
+    age: 15,
+    location: 'the Wall',
+    gender: 'Male',
+    previousBackground: 'Killing Jon Snow',
+    className: "The Night's Watch",
+    favSubjects: ['Stabbing', 'Innocent', 'People'],
+})
+
 
 // #### Project Mananger
 
@@ -96,7 +158,7 @@ class Student extends Person {
 // * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
 // * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
 
-class PM extends Instructor{
+class ProjectManager extends Instructor{
     constructor(pmAttr){
         super(pmAttr);
         this.gradClassName = pmAttr.gradClassName;
@@ -104,14 +166,77 @@ class PM extends Instructor{
         }
 
         standUp(channel){
-            console.log(`${this.name} announces to ${channel}, ${chamnel} standy times!`)
+            console.log(`${this.name} announces to ${channel}, ${channel} standy times!`)
         }
 
-        debugsCode(studentObject, subject){
+        debugsCode(student, subject){
             console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
         }
     }
 
+    const linda = new ProjectManager({
+        name: 'Linda',
+        age: 31,
+        location: 'Palm Beach',
+        gender: 'Female',
+        specialty: 'Emotional Support',
+        favLanguage: 'C++',
+        catchPhrase: "Keep trying, you're doing great",
+        gradClassName: "WEB0001",
+        favInstructor: "Josh Knell"
+    })
+
+    const gabe  = new ProjectManager({
+        name: 'Gabriel',
+        age: 27,
+        location: 'Palm Springs',
+        gender: 'Male',
+        specialty: 'Control',
+        favLanguage: 'Python',
+        catchPhrase: "Stop monkying around!!",
+        gradClassName: "WEB0002",
+        favInstructor: "Josh Knell"
+    })
+
+
+    //Person Testing
+    john.speak();
+    megan.speak();  
+
+    //Instructor Testing
+    
+   
+    console.log(josh.catchPhrase);
+    console.log(josh.specialty);
+    console.log(josh.favLanguage);
+    josh.demo('Advanced CSS design');
+    josh.grade(annie, 'math');
+    josh.grade(matt, 'every subject');
+    josh.grade(olly, 'math');
+
+    //Student Testing
+    console.log(annie.favSubjects);
+    console.log(annie.previousBackground);
+    console.log(annie.className);
+    console.log(matt.favSubjects);
+    console.log(matt.previousBackground);
+    console.log(matt.className);
+    console.log(olly.favSubjects);
+    console.log(olly.previousBackground);
+    console.log(olly.className);
+
+
+    annie.listsSubjects()
+
+    matt.PRassignment('Math')
+
+    olly.sprintChallenge('Inheritance');
+
+
+    //Project Manajer Testing
+    console.log(gabe.favInstructor);
+    console.log(gabe.standUp('channel'));
+    console.log(linda.debugsCode(olly, 'JS'));
 
 // #### Stretch Problem
 
