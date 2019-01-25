@@ -81,6 +81,18 @@ const josh = new Instructor ({
     catchPhrase: 'This is sooo cool guys.',
 })
 
+const subInstructor = new Instructor ({
+    name: 'Subman',
+    age: 51,
+    location: 'London',
+    gender: 'Male',
+    specialty: 'Filling in.',
+    favLanguage: 'Impartial',
+    catchPhrase: 'So... Where are we at?',
+})
+
+
+
 // #### Student
 
 // * Now we need some students!
@@ -213,6 +225,8 @@ class ProjectManager extends Instructor{
     josh.grade(annie, 'math');
     josh.grade(matt, 'every subject');
     josh.grade(olly, 'math');
+    subInstructor.demo('JS fundamentals');
+    subInstructor.grade(annie, 'science');
 
     //Student Testing
     console.log(annie.favSubjects);
